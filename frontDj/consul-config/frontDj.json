@@ -1,0 +1,11 @@
+{
+    "service": {
+      "name": "frontdj",
+      "port": 3004,
+      "check": {
+        "http": "http://frontdj:3004/Check",
+        "interval": "30s",
+        "timeout": "10s"
+      }
+    }
+  }

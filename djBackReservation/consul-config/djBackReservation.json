@@ -1,0 +1,11 @@
+{
+    "service": {
+      "name": "api-reservation",
+      "port": 3002,
+      "check": {
+        "http": "http://api-client:3002/Check",
+        "interval": "30s",
+        "timeout": "10s"
+      }
+    }
+  }

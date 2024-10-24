@@ -1,0 +1,11 @@
+{
+    "service": {
+      "name": "api-playlist",
+      "port": 3001,
+      "check": {
+        "http": "http://api-client:3001/Check",
+        "interval": "30s",
+        "timeout": "10s"
+      }
+    }
+  }
