@@ -167,13 +167,12 @@ function supprimerObjetParId(tableauObjets, idASupprimer) {
             'id': idReservation,
             'playlist' : playlistId
            }
-           sendData(`http://localhost:3002/booking/${id}`,newPlaylistForReservation)
-
+           sendData(`http://localhost:3002/booking/${idReservation}`,newPlaylistForReservation);
         });
 
         function sendData(url, data) {
             const xhr = new XMLHttpRequest();
-            xhr.open("POST", url, true);
+            xhr.open("PUT", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
 
             xhr.onreadystatechange = function () {

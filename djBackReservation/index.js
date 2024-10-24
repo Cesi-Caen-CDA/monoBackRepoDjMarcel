@@ -62,17 +62,28 @@ app.post("/booking", express.json(), async (req, res) => {
     }
 });
 
-app.put("/booking/:id", express.json(), (req, res) => {
+app.put('/booking/:id', express.json(), (req, res) => {
     try {
-        const id = req.params.id;
-        var soireeToModify = bookingJson.soirees.find(s => s.id == id);
-        soireeToModify.playlist = req.body.playlist;
-        res.status(200).json(soireeToModify);
+      const id = req.params.id;
+      const updatedPlaylist = req.body.playlist; // Assuming playlist is an array of IDs
+  
+      // Find the reservation to update by ID
+      const soireeToUpdate = bookingJson.soirees.find(s => s.id === parseInt(id));
+  
+      if (!soireeToUpdate) {
+        return res.status(404).json({ message: 'Reservation not found' });
+      }
+  
+      // Update the playlist property
+      soireeToUpdate.playlist = updatedPlaylist;
+  
+      res.status(200).json({ message: 'Reservation updated successfully' });
     } catch (error) {
-        res.status(400);
-        console.log(error);
+      console.error(error);
+      res.status(500).json({ message: 'Internal server error' });
+      return res
     }
-});
+  });
 
 app.patch('/booking/:id', express.json(), (req, res) => {
     try {
