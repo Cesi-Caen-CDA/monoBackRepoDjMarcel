@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  api-reservation:
+    build: ./djBackClient
+    ports:
+      - "3000:3000"
+    command: npm start
+    networks:
+      - dj-marcel
+
+networks:
+  dj-marcel:
+    driver: bridge
