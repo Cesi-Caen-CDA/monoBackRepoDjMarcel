@@ -19,6 +19,7 @@ jobs:
           username: maalsi
           key: ${{ secrets.KEYSERVER }}
           script: |
+           mkdir -p /home/maalsi/dj-marcel
            cd /home/maalsi/dj-marcel
            docker-compose down
            docker-compose pull
