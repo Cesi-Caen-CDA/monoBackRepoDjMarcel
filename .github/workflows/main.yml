@@ -1,4 +1,4 @@
-name: Deploy Rhayonne MArcel DJ
+name: Deploy Rhayonne Marcel DJ
 on:
   push:
     branches:
@@ -19,8 +19,8 @@ jobs:
           username: maalsi
           key: ${{ secrets.KEYSERVER }}
           script: |
-           mkdir -p /home/maalsi/dj-marcel
-           cd /home/maalsi/dj-marcel
-           docker-compose down
-           docker-compose pull
-           docker-compose up -d
+            mkdir -p /home/maalsi/dj-marcel
+            cd /home/maalsi/dj-marcel
+            docker-compose down
+            docker-compose pull
+            docker-compose up -d
