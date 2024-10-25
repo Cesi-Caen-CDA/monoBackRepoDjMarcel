@@ -18,9 +18,14 @@ jobs:
           host: 34.155.168.225
           username: maalsi
           key: ${{ secrets.KEYSERVER }}
+          port: 22
           script: |
             mkdir -p /home/maalsi/dj-marcel
             cd /home/maalsi/dj-marcel
             docker-compose down
             docker-compose pull
             docker-compose up -d
+          timeout: 30s
+          command_timeout: 10m
+          debug: true
+
