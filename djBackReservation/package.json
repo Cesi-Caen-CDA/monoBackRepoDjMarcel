@@ -73,7 +73,9 @@
     "vary": "^1.1.2"
   },
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "build": "webpack --mode production"
+
   },
   "author": "",
   "license": "ISC"
