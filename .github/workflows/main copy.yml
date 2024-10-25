@@ -1,0 +1,54 @@
+on:
+  push:
+    branches:
+      - rCi
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Install dependencies for djBackClient
+        working-directory: ./djBackClient
+        run: npm install
+
+      - name: Build djBackClient
+        working-directory: ./djBackClient
+        run: npm run build
+
+      - name: Install dependencies for djBackPlaylist
+        working-directory: ./djBackPlaylist
+        run: npm install
+
+      - name: Build djBackPlaylist
+        working-directory: ./djBackPlaylist
+        run: npm run build
+
+      - name: Install dependencies for djBackReservation
+        working-directory: ./djBackReservation
+        run: npm install
+
+      - name: Build djBackReservation
+        working-directory: ./djBackReservation
+        run: npm run build
+
+      - name: Install dependencies for frontDj
+        working-directory: ./frontDj
+        run: npm install
+
+      - name: Build frontDj
+        working-directory: ./frontDj
+        run: npm run build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./frontDj/build
