@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "src/app.js",
   "scripts": {
-    "start": "nodemon src/server.js"
+    "start": "nodemon src/server.js",
+    "build": "webpack --mode production"
+
   },
   "dependencies": {
     "consul": "^2.0.1",
